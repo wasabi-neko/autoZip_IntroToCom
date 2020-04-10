@@ -75,6 +75,9 @@ with open(javaFilePath) as file:
         result = re.search(r".*student.*[0-9]{9}", line, re.IGNORECASE)
         if (result != None):
             break
+    if result == None:
+        print("Error: No StduentID in .java file.\nEXIT!")
+        exit()
     studentNumber = re.search(r"[0-9]{9}", result.group()).group()
 
 print("StudentID:{}\n".format(studentNumber))
