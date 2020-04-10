@@ -5,12 +5,13 @@ auto zip `.java` and `.png` to `.zip` in the format that fits the rule of 1082In
 由於我懶得改檔名&做Zip檔，所以就寫了這個
 ## Usage
 ```= bash
-# ~bash
+# !bash
 $cp ./autoZip.py "your homeWork folder path"
 $cd "your homework folder path"
 $python3 ./autoZip.py
 ```
 ```= 口語
+# 白話版
 把`autoZip.py`放到機概作業的root
 run `python3 ./autoZip.py`
 ```
