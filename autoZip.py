@@ -1,3 +1,5 @@
+# @Deprecated
+
 import subprocess
 import re
 import os
