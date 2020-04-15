@@ -36,15 +36,7 @@ run `python3 ./autoZip.py`
     - imgColor
     - fontColor
 
-## 程式流程
-
-```
-舊版(autoZip.py)
-- 由使用者輸入 $projectName
-- 尋找 $projectFolder 裡的 `.java` & `.png`
-- 如果 $projectFolder 裡沒有 `.png`
-    - 從`桌面`提取最新的`.png`
-- 從 `.java` 檔裡提取 $studentID
-- 把原`.java``.png` 複製至 $projectfoler 並改名
-- 生產`.zip`
-```
+## TODOs
+- add exception handleing
+- add more user interface
+- add Docstring
