@@ -37,6 +37,7 @@ run `python3 ./autoZip.py`
     - fontColor
 
 ## TODOs
+- add java project support
 - add exception handleing
 - add more user interface
 - add Docstring

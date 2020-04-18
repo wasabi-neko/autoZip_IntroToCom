@@ -8,6 +8,11 @@ import platform
 import json
 from PIL import Image, ImageDraw, ImageFont
 
+
+# ==============================================================================
+# Class: FileManager
+# Usage: control files in the project
+# ==============================================================================
 class FileManager():
     FOLDER_NAME = 'autoZip'
     studentID = ''
@@ -32,12 +37,16 @@ class FileManager():
 
 
     def printInfo(self):
+        """Print all of the files
+        """
         print("javaPath:" + self.javaPath)
         print("pngPath:" + self.pngPath)
         print("folderPath" + self.getFilePath())
 
 
     def resetAll(self):
+        """Reset all 
+        """
         # remove all files in 'folder': 'autoZip'
         for root, dirs, files in os.walk(self.getFilePath('folder')):
             for file in files:
@@ -50,7 +59,7 @@ class FileManager():
 
 
     def getFilePath(self, fileType='folder', number=0):
-        """\nreturn the path of some file
+        """\nReturn the path of some file
         
         Args:
             fileType (str): the file type:{'config', 'folder', 'input', 'output'}
@@ -79,7 +88,17 @@ class FileManager():
         return re
 
     
-    def saveFile(self, fileType, number, content):
+    def saveFile(self, content, fileType='folder', number=0):
+        """\nA template of saving file
+        
+        Args:
+            content (str): the content of the file
+            fileType (str, optional): the fileType you wanna save(input, output, folder). Defaults to 'folder'.
+            number (int, optional): the number of input/output. Defaults to 0.
+        
+        Returns:
+            boolean: return if file save sucessfully
+        """
         filePath = self.getFilePath(fileType, number)
         try:
             with open(filePath, 'w') as file :
@@ -92,6 +111,11 @@ class FileManager():
 
 
     def setConfig(self, config=None):
+        """\nSet the configration of the autoZip. Use default if input is None
+        
+        Args:
+            config (object, optional): the config you wanna set. Use default if input is None. Defaults to None.
+        """
         path = self.getFilePath('config')
         if (config == None):
             config = self.DEFAULT_CONFIG
@@ -120,6 +144,11 @@ class FileManager():
             
 
     def findNewJavaFile(self):
+        """\nSearching for the java file in the project
+        
+        Returns:
+            str: the path of the java file
+        """
         newPath = ''
         print("Searching new java files")
         for root, dirs, files in os.walk(self.projectPath):
@@ -131,6 +160,8 @@ class FileManager():
 
 
     def updateJavaFile(self):
+        """Find the new java file in the project then copy it to root and rename
+        """
         newPath = self.findNewJavaFile()
 
         if (self.javaPath == ''):
@@ -146,7 +177,7 @@ class FileManager():
         shutil.copy(newPath, self.javaPath)
     
     def saveImg(self, content):
-        """draw a img and save
+        """\ndraw a img and save
         
         Args:
             content (str): input + output
@@ -177,7 +208,14 @@ class FileManager():
 
 
     def prepare(self, projectName, projectPath):
-        # maybe i will add something else here
+        """\nprepare for `runJava`
+        the task: get project name and path, updateJavaFile, make png path, make `autoZip` folder
+
+        Args:
+            projectName (str): the name of the project
+            projectPath (str): the path of the project
+        """
+        
         self.projectName = projectName
         self.projectPath = projectPath
         self.updateJavaFile()
@@ -189,6 +227,8 @@ class FileManager():
 
 
     def zipFiles(self):
+        """Make a zip file with java fie and png file
+        """
         print("Zipping java and img files...")
         zipPath = "{}/{}_{}.zip".format(self.projectPath, self.projectName, self.studentID)
         with zipfile.ZipFile(zipPath, 'w') as zf:
@@ -205,7 +245,7 @@ class FileManager():
 # Tool methods
 # ------------------------------------------------------------------------------
 def getBirthTime(path):
-    """\nget the birth time of the file
+    """\nGet the birth time of the file
     capable with windows, macos, linux
 
     Args:
@@ -225,7 +265,7 @@ def getBirthTime(path):
 
 
 def searchNewestPng():
-    """\nget the newest png file at Desktop
+    """\nGet the newest png file at Desktop
     
     Returns:
         str: img file path
@@ -248,8 +288,7 @@ def searchNewestPng():
 
 
 def getStudentID(filePath):
-
-    """\nget student id from file
+    """\nGet student id from file
     
     Args:
         filePath (str): the path of the file
