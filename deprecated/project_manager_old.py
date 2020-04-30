@@ -8,10 +8,11 @@ from file_manager import  FileManager
 # fuck myself
 
 class ProjectManager():
-    def __init__(self, projectName='', projectPath='', javaPath='', pngPath=''):
+    def __init__(self, projectName='', projectPath='', mainPath='', pngPath=''):
         self.projectName = projectName
         self.projectPath = projectPath
-        self.fileManager = FileManager(projectName, projectPath, javaPath, pngPath)
+        self.fileManager = FileManager(projectName, projectPath, mainPath, pngPath)
+
 
     def printInfo(self):
         """print the info of the project{projectName, filePath}
@@ -149,7 +150,7 @@ class ProjectManager():
         inputContent = self.getInput()
         result = None
         try:
-            result = subprocess.run(["java", self.fileManager.javaPath], stdout=subprocess.PIPE, input=inputContent, encoding='ascii')
+            result = subprocess.run(["java", self.fileManager.mainPath], stdout=subprocess.PIPE, input=inputContent, encoding='ascii')
         except:
             print("Error:JavaFile Not Found.\tat `runJava`")
         
