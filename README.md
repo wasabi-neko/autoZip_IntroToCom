@@ -46,6 +46,11 @@ $pipenv run python main.py
     - spacing
     - imgColor
     - fontColor
+### pathConfig.json
+- src: the src folder of java files
+- classpath: the classpath (the folder contained .class file)
+- pkg: the java pakage you used
+- main: the path of main java file
 
 ## TODOs
 - [x] add java project support

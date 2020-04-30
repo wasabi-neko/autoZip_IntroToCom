@@ -1,7 +1,10 @@
 # {FILE: java_manager.py}
 # imports
+import json
 import subprocess
 import os
+
+import  tools
 
 
 class JavaManager():
@@ -32,6 +35,14 @@ class JavaManager():
         self.src = "./src"
         self.classpath = "./bin"
         self.pkg = "app"
+        if os.path.isfile(tools.getAutoZipHome() + "pathConfig.json"):
+            config = {}
+            print("Use pathConfig")
+            with open(tools.getAutoZipHome() + "pathConfig.json") as file:
+                config = json.loads(file.read())
+            self.src = config['src']
+            self.classpath = config['classpath']
+            self.pkg = config['pkg']
 
 
     def compileJava(self):

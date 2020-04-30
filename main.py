@@ -5,6 +5,7 @@ from project_manager import ProjectManager
 # project.autoZip()
 # print("autoZip Complete! OwO")
 
+
 project = ProjectManager()
 project.execAll()
 print("ALL COMPELTE OwO!!")

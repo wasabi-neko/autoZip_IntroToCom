@@ -1,0 +1,6 @@
+{
+    "src": "./src",
+    "classpath": "./bin",
+    "pkg": "app",
+    "main": "./src/app/App.java"
+}

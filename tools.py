@@ -1,6 +1,11 @@
 # `re` is regular expression
 import re
 import os
+import json
+
+
+def getAutoZipHome():
+    return __file__.replace(os.path.basename(__file__), '')
 
 def readInput(prompt):
     """\nPrompt interface to ask for project name\n
@@ -48,5 +53,11 @@ def getStudentIDFromFile(filePath):
 
 def findJavaMainFile(workingdir):
     # TODO: 
+    result = os.path.join(workingdir, "src/app/App.java")
 
-    return os.path.join(workingdir, "src/app/App.java")
+    if os.path.isfile(getAutoZipHome()+ "pathConfig.json"):
+            config = {}
+            with open(getAutoZipHome()+ "pathConfig.json") as file:
+                config = json.loads(file.read())
+            result = config['main']
+    return result
