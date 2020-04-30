@@ -14,7 +14,9 @@ $Enter input of path
 input檔會留著，只要輸過一次，之後就不用輸了。
 如果想要改掉原本的input，就把file: `input0` 刪除即可
 
-以下是舊版本(autoZip.py)
+### 單檔案 project
+
+以下是舊版本(autoZip.py) 適用單 java 的 autoZip
 ```bash=
 # !bash
 $cp ./autoZip.py "your homeWork folder path"
@@ -28,16 +30,26 @@ run `python3 ./autoZip.py`
 ```
 你看很簡單的～ :+1: 
 
+### 多檔案 project
+```bash=
+# mv folder
+$cp ./autoZip_IntroToCom "your homeWork folder path" 
+$cd "path to autoZip_IntroToCom"
+$pipenv run python main.py
+```
+
 ## Customize
 ### `config.json`
 - img
     - fontSize
     - fontFamily
+    - spacing
     - imgColor
     - fontColor
 
 ## TODOs
-- add java project support
+- [x] add java project support
+  - [ ] add read `.classpath file`
 - add exception handleing
 - add more user interface
 - add Docstring
